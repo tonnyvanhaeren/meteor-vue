@@ -1,5 +1,5 @@
 <template>
-  <div id="some-id" class="my-class">Hello Youtube!</div>
+  <div id="some-id" class="my-class">{{ message }}, {{ message2 }}</div>
 </template>
 
 <script>
@@ -16,10 +16,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.my-class {
-  span {
-    color: tomato;
-  }
-}
-</style>
+<style lang="css" scoped></style>

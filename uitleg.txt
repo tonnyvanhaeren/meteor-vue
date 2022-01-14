@@ -1,0 +1,7 @@
+meteor npm i ... package
+meteor npm remove ... package
+
+## https://atmospherejs.com/ 
+
+meteor add 
+meteor remove 

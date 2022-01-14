@@ -3,11 +3,17 @@ import { Meteor } from 'meteor/meteor';
 
 import '../imports/ui/plugins';
 
-import App from '../imports/ui/App.vue';
+import AppComponent from '../imports/ui/App.vue';
 
 Meteor.startup(() => {
   new Vue({
-    el: '#app',
-    ...App,
-  });
+    render: (h) => h(AppComponent),
+  }).$mount('main');
 });
+
+// Meteor.startup(() => {
+//   new Vue({
+//     el: '#app',
+//     ...App,
+//   });
+// });
