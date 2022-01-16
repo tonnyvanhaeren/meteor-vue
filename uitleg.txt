@@ -5,3 +5,5 @@ meteor npm remove ... package
 
 meteor add 
 meteor remove 
+
+meteor npm i -D vuetify

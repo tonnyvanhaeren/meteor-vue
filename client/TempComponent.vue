@@ -1,22 +1,50 @@
 <template>
   <div id="some-id" class="my-class">
-    {{ message }}, {{ message2 }}
+    <v-card class="mb-5">
+      <v-card-text>
+        <form @submit.prevent="saveNewItem">
+          <v-container>
+            <v-row align="center">
+              <v-col>
+                <v-text-field
+                  id="item-name"
+                  v-model="newItem.name"
+                  label="name"
+                />
+              </v-col>
+              <v-col>
+                <v-text-field
+                  id="item-name"
+                  v-model="newItem.price"
+                  label="price"
+                />
+              </v-col>
+              <v-col>
+                <v-btn color="primary" type="submit">Save</v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </form>
+      </v-card-text>
+    </v-card>
 
-    <br />
-
-    <ul>
-      <li v-for="(item, idx) in items" :key="idx">
-        {{ item.name }} | ${{ item.price }}
-      </li>
-    </ul>
-
-    <form @submit.prevent="saveNewItem">
-      <label for="item-name">Name</label>
-      <input id="item-name" v-model="newItem.name" type="text" />
-      <label for="item-price">Price</label>
-      <input id="item-name" v-model="newItem.price" type="text" />
-      <button>Save</button>
-    </form>
+    <v-card>
+      <v-card-text>
+        <v-list>
+          <v-list-item v-for="(item, idx) in items" :key="idx">
+            <v-list-item-content two-line>
+              <v-list-item-title>
+                ${{ item.price }} - {{ item.name }}
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                {{ item._id }}
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-card-text>
+      <v-card-text> </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -26,9 +54,7 @@ import { Meteor } from 'meteor/meteor';
 export default {
   data() {
     return {
-      message: 'Hello Youtube!',
-      message2: 'Subscribe',
-      newItem: { name: '', price: 0 },
+      newItem: { name: '', price: null },
     };
   },
   computed: {
@@ -49,6 +75,9 @@ export default {
     },
   },
   meteor: {
+    $subscribe: {
+      allItems: [],
+    },
     items() {
       return Items.find({}).fetch();
     },

@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <h1>Welcome to Meteor!</h1>
-    <temp-component />
-  </div>
+  <v-app>
+    <v-container>
+      <h1>{{ greeting }}</h1>
+      <temp-component />
+    </v-container>
+  </v-app>
 </template>
 
 <script>
 export default {
   components: {},
+  data() {
+    return {
+      greeting: 'Hello Meteor, from Vue',
+    };
+  },
 };
 </script>
 
-<style>
-body {
-  font-family: sans-serif;
-  padding: 10px;
-}
-</style>
+<style></style>
