@@ -8,18 +8,27 @@
         <router-link :to="{ name: 'about' }">About</router-link>
       </header>
 
-      <router-view />
+      <router-view v-if="user" />
     </v-container>
   </v-app>
 </template>
 
 <script>
+import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
 export default {
   components: {},
   data() {
     return {
       greeting: 'Hello Meteor, from Vue',
+      user: null,
     };
+  },
+  created() {
+    Tracker.autorun(() => {
+      this.user = Meteor.user();
+      console.log(this.user);
+    });
   },
 };
 </script>
