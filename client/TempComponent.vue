@@ -40,6 +40,11 @@
                 {{ item._id }}
               </v-list-item-subtitle>
             </v-list-item-content>
+            <v-list-item-action>
+              <v-btn icon @click="removeItem(item)">
+                <v-icon>mdi-delete</v-icon>
+              </v-btn>
+            </v-list-item-action>
           </v-list-item>
         </v-list>
       </v-card-text>
@@ -65,7 +70,20 @@ export default {
   },
   methods: {
     saveNewItem() {
-      Meteor.call('items.insert', this.newItem, function (error, result) {
+      Meteor.call('items.insert', this.newItem, (error, result) => {
+        if (error) {
+          console.error('something went wrong', error);
+        } else {
+          console.info(result);
+          this.newItem = {
+            name: '',
+            price: null,
+          };
+        }
+      });
+    },
+    removeItem(item) {
+      Meteor.call('items.remove', item, (error, result) => {
         if (error) {
           console.error('something went wrong', error);
         } else {

@@ -6,4 +6,7 @@ Meteor.methods({
   'items.insert'(newItem) {
     return Items.insert(newItem);
   },
+  'items.remove'(item) {
+    return Items.remove({ _id: item._id });
+  },
 });
