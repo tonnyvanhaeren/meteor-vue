@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { Items } from '../imports/api/collections/Items';
+import { Items } from '../../api/collections/Items';
 import { Meteor } from 'meteor/meteor';
 export default {
   data() {

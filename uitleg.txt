@@ -7,3 +7,7 @@ meteor add
 meteor remove 
 
 meteor npm i -D vuetify
+meteor npm i -D vue-router
+
+
+meteor npm audit fix
